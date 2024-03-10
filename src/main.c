@@ -6,12 +6,11 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 18:49:08 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/09 23:42:39 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/10 20:55:46 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdarg.h>
 
 /*
 * @brief Format and print data to stdout
@@ -29,11 +28,8 @@
 */
 int	ft_printf(const char *format, ...)
 {
-	int		len;
 	va_list	ap;
 
-	len = 0;
 	va_start(ap, format);
-	va_end(ap);
-	return (len);
+
 }
