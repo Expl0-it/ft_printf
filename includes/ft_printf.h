@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 19:07:32 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/12 13:46:42 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/12 21:27:07 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,12 @@ void	flush_buf(t_data *data);
 
 void	render_format(t_data *data);
 
-void	put_padding(char c, int count, t_data *data);
+void	buf_put_chars(char c, int count, t_data *data);
 
 void	render_char(t_data *data, int c);
+
+void	render_string(t_data *data, char *s);
+
+void	buf_put_string(char *s, int length, t_data *data);
 
 #endif
