@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:04:03 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/12 13:31:37 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/12 21:23:46 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ void	render_char(t_data *data, int c)
 	{
 		if (data->flags.minus)
 		{
-			put_padding(c, 1, data);
-			put_padding(' ', (width - 1), data);
+			buf_put_chars(c, 1, data);
+			buf_put_chars(' ', (width - 1), data);
 		}
 		else
 		{
-			put_padding(' ', (width - 1), data);
-			put_padding(c, 1, data);
+			buf_put_chars(' ', (width - 1), data);
+			buf_put_chars(c, 1, data);
 		}
 	}
 	else
-		put_padding(c, 1, data);
+		buf_put_chars(c, 1, data);
 }
