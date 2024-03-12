@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 19:07:32 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/10 22:21:53 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:46:42 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "../libft/includes/libft.h"
+# include <stdbool.h>
+# include "../libft/libft.h"
 
 // NOTE: Bit shift - 4096 bytes
 #define BUF_SIZE (1<<12)
@@ -23,8 +24,6 @@
 
 typedef enum
 {
-	BASE_2 = 2,
-	BASE_8 = 8,
 	BASE_10 = 10,
 	BASE_16 = 16,
 }		e_base;
@@ -73,12 +72,24 @@ typedef struct s_data
 • %% Prints a percent sign.
 *
 */
-int	ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 
-/*
-*	@brief Initialize the variables
-*/
 int		data_init(t_data *data, const char *format);
+
 int		loop_string(t_data	*data);
+
+void	check_base(t_data *data);
+
+int		parse_format(t_data *data);
+
+void	write_to_buf(t_data *data, char c);
+
+void	flush_buf(t_data *data);
+
+void	render_format(t_data *data);
+
+void	put_padding(char c, int count, t_data *data);
+
+void	render_char(t_data *data, int c);
 
 #endif
