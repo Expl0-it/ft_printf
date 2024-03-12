@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 11:43:06 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/12 13:52:36 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/12 21:32:40 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	write_to_buf(t_data *data, char c)
 	data->buf_index++;
 }
 
-void	put_padding(char c, int count, t_data *data)
+void	buf_put_chars(char c, int count, t_data *data)
 {
 	if (0 >= count)
 		return ;
@@ -36,5 +36,17 @@ void	put_padding(char c, int count, t_data *data)
 	{
 		write_to_buf(data, c);
 		count--;
+	}
+}
+
+void	buf_put_string(char *s, int length, t_data *data)
+{
+	if (0 >= length)
+		return ;
+	while (length && *s)
+	{
+		write_to_buf(data, *s);
+		s++;
+		length--;
 	}
 }
