@@ -6,15 +6,12 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 13:46:14 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/10 20:55:43 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:49:57 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-/*
-*	@brief Initialize the variables
-*/
 int		data_init(t_data *data, const char *format)
 {
 	data->s = format;
@@ -34,15 +31,15 @@ int		loop_string(t_data	*data)
 	{
 		if (*data->s == '%' && *(++data->s))
 		{
-			if (parse_format(&data))
+			if (parse_format(data))
 				return (-1);
-			render_format(&data);
+			render_format(data);
 		}
 		else
-			write_to_buf(&data, data->s);
-		++data->s;
+			write_to_buf(data, *data->s);
+		++(data->s);
 	}
-	flush_buf(&data);
+	flush_buf(data);
 	va_end(data->ap);
 	free(data->buf);
 	return (0);
