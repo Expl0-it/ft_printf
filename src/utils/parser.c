@@ -6,12 +6,11 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 13:46:14 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/10 22:24:06 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:26:57 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
-#include <stdarg.h>
 
 void	check_base(t_data *data)
 {
@@ -23,8 +22,6 @@ void	check_base(t_data *data)
 		if ('X' == data->flags.type)
 			data->flags.uppercase = true;
 	}
-	// TODO: OCTAL
-
 }
 
 static void	parse_flags(t_data *data)
@@ -44,7 +41,7 @@ static void	parse_flags(t_data *data)
 			data->flags.hash = true;
 		if ('0' == flag)
 			data->flags.zero = true;
-		++data->s;
+		++(data->s);
 	}
 }
 
@@ -57,6 +54,8 @@ static void	get_value(t_data *data, int *value)
 		return ;
 	}
 	*value = ft_atoi(data->s);
+	while (ft_isdigit(*(data->s)))
+		++(data->s);
 }
 
 int		parse_format(t_data *data)
@@ -74,25 +73,5 @@ int		parse_format(t_data *data)
 		data->flags.type = *data->s;
 		check_base(data);
 	}
-	return (0);
-}
-
-int		loop_string(t_data	*data)
-{
-	while (*data->s)
-	{
-		if (*data->s == '%' && *(++data->s))
-		{
-			if (parse_format(data))
-				return (-1);
-			render_format(&data);
-		}
-		else
-			write_to_buf(&data, data->s);
-		++data->s;
-	}
-	flush_buf(&data);
-	va_end(data->ap);
-	free(data->buf);
 	return (0);
 }
