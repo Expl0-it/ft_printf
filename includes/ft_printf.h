@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 19:07:32 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/12 21:27:07 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:03:26 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,59 @@
 # include "../libft/libft.h"
 
 // NOTE: Bit shift - 4096 bytes
-#define BUF_SIZE (1<<12)
-#define FLAGS ("-+ #0")
-#define TYPES ("cspdiuxX%")
+# define BUF_SIZE (1<<12)
+# define FLAGS ("-+ #0")
+# define TYPES ("cspdiuxX%")
 
-typedef enum
+typedef enum e_base
 {
 	BASE_10 = 10,
 	BASE_16 = 16,
-}		e_base;
+}		t_base;
 
+/*
+ * - - left justify
+ * 
+ * + - force sign before numer
+ * 
+ * ' ' - if no sign (positive numer) then space before value
+ * 
+ *		Used with o, x or X specifiers the value is preceeded with
+ *		0, 0x or 0X respectively
+ *		for values different than zero.
+ *	# -	Used with a, A, e, E, f, F, g or G it forces the written output to contain
+ *		a decimal point even if no more digits follow.
+ *		By default, if no digits follow, no decimal point is written.
+ *  
+ *  0 - Left-pads the number with zeroes (0) instead
+ *  of spaces when padding is specified
+ *
+ *  Width -	Minimum number of characters to be printed.  On '*' the width
+ *  is not specified
+ *  in the format string, but as an additional integer value argument
+ *  preceding the formated argument
+ *
+ *  Precision - For integer specifiers (d, i, o, u, x, X): precision specifies
+ *  the minimum number
+ *  of digits to be written. If the value to be written is shorter
+ *  than this number, the result
+ *  is padded with leading zeros. The value is not truncated
+ *  even if the result is longer.
+ *  A precision of 0 means that no character is written for the value 0.
+ *  For a, A, e, E, f and F specifiers: this is the number of
+ *  digits to be printed after
+ *  the decimal point (by default, this is 6).
+ *  For g and G specifiers: This is the maximum number
+ *  of significant digits to be printed.
+ *  For s: this is the maximum number of characters to be printed.
+ *  By default all characters are printed until the ending
+ *  null character is encountered.
+ *  If the period is specified without an explicit value for
+ *  precision, 0 is assumed.
+ *  On '*' the precision is not specified in the format string,
+ *  but as an additional integer value
+ *  argument preceding the argument that has to be formatted. 
+ */
 typedef struct s_flags
 {
 	bool	minus;
@@ -40,8 +83,9 @@ typedef struct s_flags
 	int		precision;
 
 	char	type;
-	e_base	base;
+	t_base	base;
 	bool	uppercase;
+	int		padding;
 }			t_flags;
 
 typedef struct s_data
@@ -49,7 +93,7 @@ typedef struct s_data
 	const char	*s;
 
 	va_list		ap;
-	
+
 	int			len;
 
 	char		*buf;
@@ -86,13 +130,13 @@ void	write_to_buf(t_data *data, char c);
 
 void	flush_buf(t_data *data);
 
+void	render_str(t_data *data, char *s);
+
 void	render_format(t_data *data);
 
 void	buf_put_chars(char c, int count, t_data *data);
 
 void	render_char(t_data *data, int c);
-
-void	render_string(t_data *data, char *s);
 
 void	buf_put_string(char *s, int length, t_data *data);
 

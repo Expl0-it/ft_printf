@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 13:46:14 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/12 13:37:47 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:01:31 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	render_format(t_data *data)
 		render_char(data, '%');
 	if ('c' == type)
 		render_char(data, va_arg(data->ap, int));
-//	if ('s' == type)
-//		render_string(data, va_arg(data->ap, char *));
+	if ('s' == type)
+		render_str(data, va_arg(data->ap, char *));
 	// TODO: int, hex
 }
