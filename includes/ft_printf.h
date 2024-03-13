@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 19:07:32 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/13 11:03:26 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/13 15:28:59 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ typedef enum e_base
 	BASE_16 = 16,
 }		t_base;
 
+// NOTE: Hold multiple values at the same adress in memory
+typedef union union_long
+{
+	unsigned long	unsigned_l;
+	long			signed_l;
+}			t_union_long;
 /*
  * - - left justify
  * 
@@ -86,6 +92,8 @@ typedef struct s_flags
 	t_base	base;
 	bool	uppercase;
 	int		padding;
+	bool	is_signed;
+	bool	is_negative;
 }			t_flags;
 
 typedef struct s_data
@@ -139,5 +147,7 @@ void	buf_put_chars(char c, int count, t_data *data);
 void	render_char(t_data *data, int c);
 
 void	buf_put_string(char *s, int length, t_data *data);
+
+void	render_number(t_data *data, t_union_long number);
 
 #endif
