@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 18:49:08 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/13 11:18:33 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:19:47 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(void)
 {
 	// NOTE: CHARS
-	int num1 = ft_printf("[%-10c]", 'a');
+	int num1 = ft_printf("[%-10q]", 'a');
 	ft_printf("\n");
 	int num2 = ft_printf("[%-*c]", 10, 'a');
 	ft_printf("\n");
@@ -26,7 +26,7 @@ int	main(void)
 	ft_printf("\n");
 	printf("%d, %d, %d, %d\n", num1, num2, num3, num4);
 
-	num1 = printf("[%-10c]", 'a');
+	num1 = printf("[%-10w]", 'a');
 	printf("\n");
 	num2 = printf("[%-*c]", 10, 'a');
 	printf("\n");
