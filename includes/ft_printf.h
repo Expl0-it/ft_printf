@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 19:07:32 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/13 15:28:59 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/14 11:40:38 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,5 +149,7 @@ void	render_char(t_data *data, int c);
 void	buf_put_string(char *s, int length, t_data *data);
 
 void	render_number(t_data *data, t_union_long number);
+
+char	*ft_ltoa_base(long number, int base);
 
 #endif
