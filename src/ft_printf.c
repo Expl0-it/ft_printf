@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 18:49:08 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/13 12:25:29 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:22:56 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_printf(const char *format, ...)
 	t_data	data;
 
 	va_start(data.ap, format);
-	if (-1 != data_init(&data, format))
+	if (-1 == data_init(&data, format))
 		return (-1);
 	if (-1 != loop_string(&data))
 		return (data.len);

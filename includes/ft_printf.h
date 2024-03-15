@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 19:07:32 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/14 11:40:38 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:05:49 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef union union_long
 	unsigned long	unsigned_l;
 	long			signed_l;
 }			t_union_long;
+
 /*
  * - - left justify
  * 
@@ -92,8 +93,11 @@ typedef struct s_flags
 	t_base	base;
 	bool	uppercase;
 	int		padding;
+	int		padding_zeros;
 	bool	is_signed;
 	bool	is_negative;
+	char	*tmp;
+	int		tmp_len;
 }			t_flags;
 
 typedef struct s_data
@@ -150,6 +154,10 @@ void	buf_put_string(char *s, int length, t_data *data);
 
 void	render_number(t_data *data, t_union_long number);
 
-char	*ft_ltoa_base(long number, int base);
+char	*ft_ltoa_base(long number, int base, bool upperase);
+
+void	set_num_padding_zeros(t_data *data);
+
+void	set_num_padding_spaces(t_data *data);
 
 #endif

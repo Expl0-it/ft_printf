@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:04:03 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/12 21:23:46 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:16:07 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void	render_char(t_data *data, int c)
 {
 	int	width;
 
+	if ('%' == data->flags.type)
+	{
+		buf_put_chars('%', 1, data);
+		return ;
+	}
 	width = data->flags.width;
 	if (1 < width)
 	{

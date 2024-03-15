@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_ltoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:30:06 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/14 13:30:17 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:08:35 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
+#include <stdbool.h>
 
-static long	convert_base(long tmp)
+static long	convert_base(long tmp, bool uppercase)
 {
-	if (10 <= tmp)
+	if (tmp >= 10 && false == uppercase)
 		return (tmp - 10 + 'a');
+	else if (tmp >= 10 && true == uppercase)
+		return (tmp - 10 + 'A');
 	else
-		return (tmp + 0);
+		return (tmp + '0');
 }
 
-char	*ft_ltoa_base(long number, int base)
+char	*ft_ltoa_base(long number, int base, bool uppercase)
 {
 	int		i;
 	char	*str;
 	long	tmp;
 
-	i = 0;
+	if (number < 0)
+		number = -number;
+	i = 1;
 	tmp = number;
 	while (tmp >= base)
 	{
@@ -36,11 +41,16 @@ char	*ft_ltoa_base(long number, int base)
 	str = (char *)malloc((i + 1) * sizeof(char));
 	if (NULL == str)
 		return (NULL);
-	str[i + 1] = 0;
-	while (0 <= i)
+/*	if (number == -2147483648)
 	{
-		tmp = number / base;
-		str[i] = convert_base(tmp);
+		str = "-2147483648";
+		return (str);
+	}*/
+	str[i--] = 0;
+	while (i >= 0)
+	{
+		tmp = number % base;
+		str[i] = convert_base(tmp, uppercase);
 		number /= base;
 		i--;
 	}
