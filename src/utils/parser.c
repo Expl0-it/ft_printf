@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 13:46:14 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/12 14:26:57 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:45:34 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_base(t_data *data)
 
 static void	parse_flags(t_data *data)
 {
-	char flag;
+	char	flag;
 
 	while (NULL != ft_strchr(FLAGS, *data->s))
 	{
@@ -58,7 +58,7 @@ static void	get_value(t_data *data, int *value)
 		++(data->s);
 }
 
-int		parse_format(t_data *data)
+int	parse_format(t_data *data)
 {
 	ft_bzero(&data->flags, sizeof(t_flags));
 	data->flags.precision = -1;

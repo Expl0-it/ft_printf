@@ -6,13 +6,13 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 13:46:14 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/12 21:19:59 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:47:37 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-int		data_init(t_data *data, const char *format)
+int	data_init(t_data *data, const char *format)
 {
 	data->s = format;
 	data->len = 0;
@@ -23,9 +23,7 @@ int		data_init(t_data *data, const char *format)
 	return (0);
 }
 
-
-
-int		loop_string(t_data	*data)
+int	loop_string(t_data	*data)
 {
 	while (*data->s)
 	{

@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:12:24 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/15 21:04:52 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:45:07 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static void	num_put_sign(t_data *data)
 {
 	if ((ft_strchr("xX", data->flags.type) && data->flags.hash
-		&& data->flags.tmp[0] != '0') || data->flags.type == 'p')
+			&& data->flags.tmp[0] != '0') || data->flags.type == 'p')
 	{
 		if (data->flags.uppercase)
 			buf_put_string("0X", 2, data);

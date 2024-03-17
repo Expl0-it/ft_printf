@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:04:03 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/13 11:05:50 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:47:07 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void	set_str_padding(t_data *data, char *s)
 				data->flags.padding = data->flags.width - length;
 			else if (length > data->flags.precision)
 				data->flags.padding = data->flags.width - data->flags.precision;
-				
 		}
 		else
 		{

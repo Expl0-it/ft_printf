@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:27:54 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/15 19:37:50 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:46:12 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	set_num_padding_zeros(t_data *data)
 		else if ((ft_strchr("xX", data->flags.type) && data->flags.hash
 				&& data->flags.tmp[0] != '0') || data->flags.type == 'p')
 			data->flags.padding_zeros -= 2;
-		else if (data->flags.is_negative || (!data->flags.is_negative 
-			&& (data->flags.plus || data->flags.space)))
+		else if (data->flags.is_negative || (!data->flags.is_negative
+				&& (data->flags.plus || data->flags.space)))
 			data->flags.padding_zeros -= 1;
 	}
 	if (data->flags.padding_zeros < 0)

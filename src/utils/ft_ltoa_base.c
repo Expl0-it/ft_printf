@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:30:06 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/15 21:08:35 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:46:45 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,6 @@ char	*ft_ltoa_base(long number, int base, bool uppercase)
 	str = (char *)malloc((i + 1) * sizeof(char));
 	if (NULL == str)
 		return (NULL);
-/*	if (number == -2147483648)
-	{
-		str = "-2147483648";
-		return (str);
-	}*/
 	str[i--] = 0;
 	while (i >= 0)
 	{
