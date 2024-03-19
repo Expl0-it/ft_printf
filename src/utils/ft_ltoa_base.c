@@ -6,14 +6,14 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:30:06 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/17 16:46:45 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:09:37 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 #include <stdbool.h>
 
-static long	convert_base(long tmp, bool uppercase)
+static unsigned long	convert_base(long tmp, bool uppercase)
 {
 	if (tmp >= 10 && false == uppercase)
 		return (tmp - 10 + 'a');
@@ -23,13 +23,14 @@ static long	convert_base(long tmp, bool uppercase)
 		return (tmp + '0');
 }
 
-char	*ft_ltoa_base(long number, int base, bool uppercase)
+char	*ft_ltoa_base(unsigned long number, unsigned int base, \
+				bool uppercase, char type)
 {
-	int		i;
-	char	*str;
-	long	tmp;
+	int				i;
+	char			*str;
+	unsigned long	tmp;
 
-	if (number < 0)
+	if ((long)number < 0 && type != 'p')
 		number = -number;
 	i = 1;
 	tmp = number;

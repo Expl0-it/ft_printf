@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 13:46:14 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/15 20:05:45 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:06:47 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 //			di	- signed int	=> long
 //			p	- void *		=> unsigned long
 //			xXu	- unsigned int	=> unsigned long
-static void	promote_int(t_data *data, char type, t_union_long *number)
+static int	promote_int(t_data *data, char type, t_union_long *number)
 {
+	void	*is_null;
+
 	if (ft_strchr("di", type))
 	{
 		number->signed_l = (long)va_arg(data->ap, int);
@@ -30,7 +32,10 @@ static void	promote_int(t_data *data, char type, t_union_long *number)
 	}
 	else if ('p' == type)
 	{
-		number->unsigned_l = (unsigned long)va_arg(data->ap, void *);
+		is_null = va_arg(data->ap, void *);
+		if (NULL == is_null)
+			return (1);
+		number->unsigned_l = (unsigned long)is_null;
 		data->flags.is_signed = false;
 		data->flags.is_negative = false;
 	}
@@ -40,6 +45,7 @@ static void	promote_int(t_data *data, char type, t_union_long *number)
 		data->flags.is_signed = false;
 		data->flags.is_negative = false;
 	}
+	return (0);
 }
 
 void	render_format(t_data *data)
@@ -56,7 +62,9 @@ void	render_format(t_data *data)
 		render_str(data, va_arg(data->ap, char *));
 	if (ft_strchr("pdiuxX", type))
 	{
-		promote_int(data, type, &number);
-		render_number(data, number);
+		if (promote_int(data, type, &number))
+			render_str(data, "(nil)");
+		else
+			render_number(data, number);
 	}
 }

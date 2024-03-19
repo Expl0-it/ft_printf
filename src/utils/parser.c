@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 13:46:14 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/17 16:45:34 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:13:24 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	parse_flags(t_data *data)
 {
 	char	flag;
 
-	while (NULL != ft_strchr(FLAGS, *data->s))
+	while (NULL != ft_strchr("-+ #0", *data->s))
 	{
 		flag = *data->s;
 		if ('-' == flag)
@@ -66,7 +66,7 @@ int	parse_format(t_data *data)
 	get_value(data, &data->flags.width);
 	if ('.' == *data->s && *(++data->s))
 		get_value(data, &data->flags.precision);
-	if (NULL == ft_strchr(TYPES, *data->s))
+	if (NULL == ft_strchr("cspdiuxX%", *data->s))
 		return (-1);
 	else
 	{

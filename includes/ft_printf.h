@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 19:07:32 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/17 16:42:18 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:15:49 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@
 # include <stdbool.h>
 # include "../libft/libft.h"
 
-// NOTE: Bit shift - 4096 bytes
-# define BUF_SIZE (1<<12)
-# define FLAGS ("-+ #0")
-# define TYPES ("cspdiuxX%")
+// NOTE: Bit shift - 4096 bytes (1<<12)
+# define BUF_SIZE 4096
 
 typedef enum e_base
 {
@@ -45,7 +43,8 @@ typedef union union_long
  *		Used with o, x or X specifiers the value is preceeded with
  *		0, 0x or 0X respectively
  *		for values different than zero.
- *	# -	Used with a, A, e, E, f, F, g or G it forces the written output to contain
+ *	# -	Used with a, A, e, E, f, F, g or G it forces the
+ *		written output to contain
  *		a decimal point even if no more digits follow.
  *		By default, if no digits follow, no decimal point is written.
  *  
@@ -154,7 +153,8 @@ void	buf_put_string(char *s, int length, t_data *data);
 
 void	render_number(t_data *data, t_union_long number);
 
-char	*ft_ltoa_base(long number, int base, bool upperase);
+char	*ft_ltoa_base(unsigned long number, unsigned int base, \
+				bool upperase, char type);
 
 void	set_num_padding_zeros(t_data *data);
 

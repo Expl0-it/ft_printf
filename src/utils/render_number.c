@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:12:24 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/17 16:45:07 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:07:56 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static void	num_put_sign(t_data *data)
 */
 void	render_number(t_data *data, t_union_long number)
 {
-	data->flags.tmp = ft_ltoa_base((long)number.unsigned_l, \
-								data->flags.base, data->flags.uppercase);
+	data->flags.tmp = ft_ltoa_base(number.signed_l, \
+					data->flags.base, data->flags.uppercase, data->flags.type);
 	data->flags.tmp_len = ft_strlen(data->flags.tmp);
 	set_num_padding_zeros(data);
 	set_num_padding_spaces(data);
