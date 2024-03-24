@@ -6,12 +6,11 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:30:06 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/19 14:09:37 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/24 14:51:23 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
-#include <stdbool.h>
 
 static unsigned long	convert_base(long tmp, bool uppercase)
 {

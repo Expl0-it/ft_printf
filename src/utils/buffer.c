@@ -6,12 +6,11 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 11:43:06 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/13 10:48:49 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/03/24 14:52:05 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
-#include <unistd.h>
 
 void	flush_buf(t_data *data)
 {
