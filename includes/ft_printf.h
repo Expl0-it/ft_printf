@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 19:07:32 by mamichal          #+#    #+#             */
-/*   Updated: 2024/04/24 14:41:35 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:53:35 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct s_utils
 {
 	t_base	base;
 	bool	uppercase;
-	int		padding;
+	int		padding_spaces;
 	int		padding_zeros;
 	bool	is_signed;
 	bool	is_negative;

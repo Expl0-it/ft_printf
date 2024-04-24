@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:27:54 by mamichal          #+#    #+#             */
-/*   Updated: 2024/04/24 14:34:15 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:56:45 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,20 @@ void	set_num_padding_zeros(t_data *data)
 
 void	set_num_padding_spaces(t_data *data)
 {
-	data->utils.padding = data->flags.width - data->utils.padding_zeros \
+	data->utils.padding_spaces = data->flags.width - data->utils.padding_zeros \
 		- data->utils.tmp_len;
 	if (ft_strchr("uxXp", data->flags.type))
 	{
 		if ((ft_strchr("xX", data->flags.type) && data->flags.hash
 				&& data->utils.tmp[0] != '0') || data->flags.type == 'p')
-			data->utils.padding -= 2;
+			data->utils.padding_spaces -= 2;
 		return ;
 	}
 	if (data->utils.is_negative)
 	{
-		data->utils.padding--;
+		data->utils.padding_spaces--;
 		return ;
 	}
 	if (!data->utils.is_negative && (data->flags.plus || data->flags.space))
-		data->utils.padding--;
+		data->utils.padding_spaces--;
 }

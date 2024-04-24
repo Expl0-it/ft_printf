@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:12:24 by mamichal          #+#    #+#             */
-/*   Updated: 2024/04/24 14:37:05 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:54:56 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ void	render_number(t_data *data, t_union_long number)
 		buf_put_chars('0', data->utils.padding_zeros, data);
 		buf_put_string(data->utils.tmp, data->utils.tmp_len, data);
 		free(data->utils.tmp);
-		buf_put_chars(' ', data->utils.padding, data);
+		buf_put_chars(' ', data->utils.padding_spaces, data);
 	}
 	else
 	{
-		buf_put_chars(' ', data->utils.padding, data);
+		buf_put_chars(' ', data->utils.padding_spaces, data);
 		num_put_sign(data);
 		buf_put_chars('0', data->utils.padding_zeros, data);
 		buf_put_string(data->utils.tmp, data->utils.tmp_len, data);
