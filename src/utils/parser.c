@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 13:46:14 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/19 14:13:24 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:44:33 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	check_base(t_data *data)
 {
 	if (NULL != ft_strchr("diu", data->flags.type))
-		data->flags.base = BASE_10;
+		data->utils.base = BASE_10;
 	else if (NULL != ft_strchr("xXp", data->flags.type))
 	{
-		data->flags.base = BASE_16;
+		data->utils.base = BASE_16;
 		if ('X' == data->flags.type)
-			data->flags.uppercase = true;
+			data->utils.uppercase = true;
 	}
 }
 
@@ -61,6 +61,7 @@ static void	get_value(t_data *data, int *value)
 int	parse_format(t_data *data)
 {
 	ft_bzero(&data->flags, sizeof(t_flags));
+	ft_bzero(&data->utils, sizeof(t_utils));
 	data->flags.precision = -1;
 	parse_flags(data);
 	get_value(data, &data->flags.width);

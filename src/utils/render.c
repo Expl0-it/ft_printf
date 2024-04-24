@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 13:46:14 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/24 14:51:54 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:30:31 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static int	promote_int(t_data *data, char type, t_union_long *number)
 	if (ft_strchr("di", type))
 	{
 		number->signed_l = (long)va_arg(data->ap, int);
-		data->flags.is_signed = true;
+		data->utils.is_signed = true;
 		if (0 > number->signed_l)
-			data->flags.is_negative = true;
+			data->utils.is_negative = true;
 	}
 	else if ('p' == type)
 	{
@@ -35,14 +35,14 @@ static int	promote_int(t_data *data, char type, t_union_long *number)
 		if (NULL == is_null)
 			return (1);
 		number->unsigned_l = (unsigned long)is_null;
-		data->flags.is_signed = false;
-		data->flags.is_negative = false;
+		data->utils.is_signed = false;
+		data->utils.is_negative = false;
 	}
 	else if (ft_strchr("xXu", type))
 	{
 		number->unsigned_l = (unsigned long)va_arg(data->ap, unsigned int);
-		data->flags.is_signed = false;
-		data->flags.is_negative = false;
+		data->utils.is_signed = false;
+		data->utils.is_negative = false;
 	}
 	return (0);
 }

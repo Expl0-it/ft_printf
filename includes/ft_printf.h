@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 19:07:32 by mamichal          #+#    #+#             */
-/*   Updated: 2024/04/24 14:19:14 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:41:35 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ typedef union union_long
  */
 typedef struct s_flags
 {
+	char	type;
+
 	bool	minus;
 	bool	plus;
 	bool	space;
@@ -87,8 +89,10 @@ typedef struct s_flags
 
 	int		width;
 	int		precision;
+}			t_flags;
 
-	char	type;
+typedef struct s_utils
+{
 	t_base	base;
 	bool	uppercase;
 	int		padding;
@@ -97,7 +101,7 @@ typedef struct s_flags
 	bool	is_negative;
 	char	*tmp;
 	int		tmp_len;
-}			t_flags;
+}				t_utils;
 
 typedef struct s_data
 {
@@ -111,6 +115,7 @@ typedef struct s_data
 	int			buf_index;
 
 	t_flags		flags;
+	t_utils		utils;
 }			t_data;
 
 /*
@@ -149,17 +154,18 @@ void	write_to_buf(t_data *data, char c);
 void	buf_put_chars(char c, int count, t_data *data);
 void	buf_put_string(char *s, int length, t_data *data);
 
-// render_string
+// render_string.c
 void	render_str(t_data *data, char *s);
 
-// render_number
+// render_number.c
 void	render_number(t_data *data, t_union_long number);
 
+// number_utils.c
+void	set_num_padding_zeros(t_data *data);
+void	set_num_padding_spaces(t_data *data);
+
+// ft_ltoa_base.c
 char	*ft_ltoa_base(unsigned long number, unsigned int base, \
 				bool upperase, char type);
-
-void	set_num_padding_zeros(t_data *data);
-
-void	set_num_padding_spaces(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:12:24 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/19 14:07:56 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:37:05 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@
 static void	num_put_sign(t_data *data)
 {
 	if ((ft_strchr("xX", data->flags.type) && data->flags.hash
-			&& data->flags.tmp[0] != '0') || data->flags.type == 'p')
+			&& data->utils.tmp[0] != '0') || data->flags.type == 'p')
 	{
-		if (data->flags.uppercase)
+		if (data->utils.uppercase)
 			buf_put_string("0X", 2, data);
 		else
 			buf_put_string("0x", 2, data);
 	}
-	else if (data->flags.is_signed)
+	else if (data->utils.is_signed)
 	{
-		if (data->flags.is_negative)
+		if (data->utils.is_negative)
 			buf_put_chars('-', 1, data);
-		else if (!data->flags.is_negative)
+		else if (!data->utils.is_negative)
 		{
 			if (data->flags.plus)
 				buf_put_chars('+', 1, data);
@@ -50,25 +50,25 @@ static void	num_put_sign(t_data *data)
 */
 void	render_number(t_data *data, t_union_long number)
 {
-	data->flags.tmp = ft_ltoa_base(number.signed_l, \
-					data->flags.base, data->flags.uppercase, data->flags.type);
-	data->flags.tmp_len = ft_strlen(data->flags.tmp);
+	data->utils.tmp = ft_ltoa_base(number.signed_l, \
+					data->utils.base, data->utils.uppercase, data->flags.type);
+	data->utils.tmp_len = ft_strlen(data->utils.tmp);
 	set_num_padding_zeros(data);
 	set_num_padding_spaces(data);
 	if (data->flags.minus)
 	{
 		num_put_sign(data);
-		buf_put_chars('0', data->flags.padding_zeros, data);
-		buf_put_string(data->flags.tmp, data->flags.tmp_len, data);
-		free(data->flags.tmp);
-		buf_put_chars(' ', data->flags.padding, data);
+		buf_put_chars('0', data->utils.padding_zeros, data);
+		buf_put_string(data->utils.tmp, data->utils.tmp_len, data);
+		free(data->utils.tmp);
+		buf_put_chars(' ', data->utils.padding, data);
 	}
 	else
 	{
-		buf_put_chars(' ', data->flags.padding, data);
+		buf_put_chars(' ', data->utils.padding, data);
 		num_put_sign(data);
-		buf_put_chars('0', data->flags.padding_zeros, data);
-		buf_put_string(data->flags.tmp, data->flags.tmp_len, data);
-		free(data->flags.tmp);
+		buf_put_chars('0', data->utils.padding_zeros, data);
+		buf_put_string(data->utils.tmp, data->utils.tmp_len, data);
+		free(data->utils.tmp);
 	}
 }
