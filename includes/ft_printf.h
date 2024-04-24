@@ -6,7 +6,7 @@
 /*   By: mamichal <mamichal@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 19:07:32 by mamichal          #+#    #+#             */
-/*   Updated: 2024/03/19 14:15:49 by mamichal         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:19:14 by mamichal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,28 +129,30 @@ typedef struct s_data
 */
 int		ft_printf(const char *format, ...);
 
+// utils.c
 int		data_init(t_data *data, const char *format);
-
 int		loop_string(t_data	*data);
 
+// parser.c
 void	check_base(t_data *data);
-
 int		parse_format(t_data *data);
 
-void	write_to_buf(t_data *data, char c);
-
-void	flush_buf(t_data *data);
-
-void	render_str(t_data *data, char *s);
-
+// render.c
 void	render_format(t_data *data);
 
-void	buf_put_chars(char c, int count, t_data *data);
-
+// render_char.c
 void	render_char(t_data *data, int c);
 
+// buffer.c
+void	flush_buf(t_data *data);
+void	write_to_buf(t_data *data, char c);
+void	buf_put_chars(char c, int count, t_data *data);
 void	buf_put_string(char *s, int length, t_data *data);
 
+// render_string
+void	render_str(t_data *data, char *s);
+
+// render_number
 void	render_number(t_data *data, t_union_long number);
 
 char	*ft_ltoa_base(unsigned long number, unsigned int base, \
